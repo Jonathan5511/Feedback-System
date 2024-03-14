@@ -12,7 +12,7 @@ function handleSubmit(event)
         name,
         rating
     }
-    axios.post("https://crudcrud.com/api/e04b287b60e8445292bb8118e151d7b5/feedback", obj)
+    axios.post("https://crudcrud.com/api/bd14b87a0a02463a99c95c499da1ef7f/feedback", obj)
     .then((result)=>{
         showUserOnScreen(result.data);
     })
@@ -23,7 +23,7 @@ function handleSubmit(event)
     
 }
 window.addEventListener("DOMContentLoaded",()=>{
-    axios.get("https://crudcrud.com/api/e04b287b60e8445292bb8118e151d7b5/feedback")
+    axios.get("https://crudcrud.com/api/bd14b87a0a02463a99c95c499da1ef7f/feedback")
     .then((result)=>
     {
         for(var i=0;i<result.data.length;i++)
@@ -73,7 +73,7 @@ function showUserOnScreen(obj){
 
     deleteButton.onclick=()=>
     {
-        axios.delete(`https://crudcrud.com/api/e04b287b60e8445292bb8118e151d7b5/feedback/${obj._id}`
+        axios.delete(`https://crudcrud.com/api/bd14b87a0a02463a99c95c499da1ef7f/feedback/${obj._id}`
     )
     .then((response) => {
         if(obj.rating==1)
@@ -107,7 +107,7 @@ function showUserOnScreen(obj){
     
     editButton.onclick=()=>
     {
-        axios.delete(`https://crudcrud.com/api/e04b287b60e8445292bb8118e151d7b5/feedback/${obj._id}`
+        axios.delete(`https://crudcrud.com/api/bd14b87a0a02463a99c95c499da1ef7f/feedback/${obj._id}`
         )
         .then((response) =>{
             if(obj.rating==1)
