@@ -1,4 +1,8 @@
-var count=0;
+var c1=0;
+var c2=0;
+var c3=0;
+var c4=0;
+var c5=0;
 function handleSubmit(event)
 {
     event.preventDefault();
@@ -8,71 +12,18 @@ function handleSubmit(event)
         name,
         rating
     }
-    axios.post("https://crudcrud.com/api/692d5e974c7040f2aef97ea45e90dbc1/feedback", obj)
+    axios.post("https://crudcrud.com/api/e04b287b60e8445292bb8118e151d7b5/feedback", obj)
     .then((result)=>{
         showUserOnScreen(result.data);
-        increment();
     })
     .catch((error)=>{
         document.body.innerHTML = document.body.innerHTML + "<h4> Something went wrong </h4>"
         console.log(error)
     })
-    const star1= document.getElementById('count1');
-    const star2= document.getElementById('count2');
-    const star3= document.getElementById('count3');
-    const star4= document.getElementById('count4');
-    const star5= document.getElementById('count5');
     
-    function increment() {
-        count += 1
-        if(obj.rating==1)
-        {
-            star1.textContent = count
-        }
-        else if(obj.rating==2)
-        {
-            star2.textContent = count
-        }
-        else if(obj.rating==3)
-        {
-            star3.textContent = count
-        }
-        else if(obj.rating==4)
-        {
-            star4.textContent = count
-        }
-        else if(obj.rating==5)
-        {
-            star5.textContent = count
-        }
-    }
-    function decrement() {
-        count -= 1
-        if(obj.rating==1)
-        {
-            star1.textContent = count
-        }
-        else if(obj.rating==2)
-        {
-            star2.textContent = count
-        }
-        else if(obj.rating==3)
-        {
-            star3.textContent = count
-        }
-        else if(obj.rating==4)
-        {
-            star4.textContent = count
-        }
-        else if(obj.rating==5)
-        {
-            star5.textContent = count
-        }
-    } 
 }
-
 window.addEventListener("DOMContentLoaded",()=>{
-    axios.get("https://crudcrud.com/api/692d5e974c7040f2aef97ea45e90dbc1/feedback")
+    axios.get("https://crudcrud.com/api/e04b287b60e8445292bb8118e151d7b5/feedback")
     .then((result)=>
     {
         for(var i=0;i<result.data.length;i++)
@@ -89,18 +40,65 @@ function showUserOnScreen(obj){
     const childElem = document.createElement('li')
     childElem.textContent=' '+obj.name+' - '+obj.rating+' '
 
+    const star1 = document.getElementById('count1')
+    const star2 = document.getElementById('count2')
+    const star3 = document.getElementById('count3')
+    const star4 = document.getElementById('count4')
+    const star5 = document.getElementById('count5')
+    
+    if(obj.rating==1)
+    {
+        star1.textContent=++c1
+    }
+    if(obj.rating==2)
+    {
+        star2.textContent=++c2
+    }
+    if(obj.rating==3)
+    {
+        star3.textContent=++c3
+    }
+    if(obj.rating==4)
+    {
+        star4.textContent=++c4
+    }
+    if(obj.rating==5)
+    {
+        star5.textContent=++c5
+    }
+
     const deleteButton=document.createElement('input')
     deleteButton.type = 'button'
     deleteButton.value = 'Delete'
 
     deleteButton.onclick=()=>
     {
-        axios.delete(`https://crudcrud.com/api/692d5e974c7040f2aef97ea45e90dbc1/feedback/${obj._id}`
+        axios.delete(`https://crudcrud.com/api/e04b287b60e8445292bb8118e151d7b5/feedback/${obj._id}`
     )
-    .then((response) => displayUserOnScreen(response.data))
+    .then((response) => {
+        if(obj.rating==1)
+        {
+            star1.textContent=--c1
+        }
+        if(obj.rating==2)
+        {
+            star2.textContent=--c2
+        }
+        if(obj.rating==3)
+        {
+            star3.textContent=--c3
+        }
+        if(obj.rating==4)
+        {
+            star4.textContent=--c4
+        }
+        if(obj.rating==5)
+        {
+            star5.textContent=--c5
+        }
+    })
     .catch((error) => console.log(error));
     parentElem.removeChild(childElem)
-    decrement();
     }
 
     const editButton=document.createElement('input')
@@ -109,14 +107,34 @@ function showUserOnScreen(obj){
     
     editButton.onclick=()=>
     {
-        axios.delete(`https://crudcrud.com/api/692d5e974c7040f2aef97ea45e90dbc1/feedback/${obj._id}`
+        axios.delete(`https://crudcrud.com/api/e04b287b60e8445292bb8118e151d7b5/feedback/${obj._id}`
         )
-        .then((response) => console.log(response))
+        .then((response) =>{
+            if(obj.rating==1)
+        {
+            star1.textContent=--c1
+        }
+        if(obj.rating==2)
+        {
+            star2.textContent=--c2
+        }
+        if(obj.rating==3)
+        {
+            star3.textContent=--c3
+        }
+        if(obj.rating==4)
+        {
+            star4.textContent=--c4
+        }
+        if(obj.rating==5)
+        {
+            star5.textContent=--c5
+        }
+        })
         .catch((error) => console.log(error));
         document.getElementById('name').value=obj.name;
         document.getElementById('rating').value=obj.rating;
         parentElem.removeChild(childElem)
-        decrement()
         
     }
 
