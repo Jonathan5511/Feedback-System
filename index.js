@@ -70,6 +70,7 @@ function showUserOnScreen(obj){
     const deleteButton=document.createElement('input')
     deleteButton.type = 'button'
     deleteButton.value = 'Delete'
+    deleteButton.className = "btn btn-primary btn-sm"
 
     deleteButton.onclick=()=>
     {
@@ -104,6 +105,7 @@ function showUserOnScreen(obj){
     const editButton=document.createElement('input')
     editButton.type = 'button'
     editButton.value = 'Edit'
+    editButton.className = "btn btn-primary btn-sm"
     
     editButton.onclick=()=>
     {
@@ -137,8 +139,8 @@ function showUserOnScreen(obj){
         parentElem.removeChild(childElem)
         
     }
-
     childElem.appendChild(editButton)
+    childElem.appendChild(document.createTextNode (" "))
     childElem.appendChild(deleteButton)
     parentElem.appendChild(childElem)
 }
